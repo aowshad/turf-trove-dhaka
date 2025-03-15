@@ -67,9 +67,10 @@ export default {
           dark: "#1A1F2C",
           darker: "#151820",
           darkest: "#0F1218",
-          light: "#3A90D9",
-          accent: "#5ECFFF",
+          primary: "#198B46",
+          accent: "#25C266",
           highlight: "#24D7C2",
+          light: "#5AC984",
         },
       },
       borderRadius: {

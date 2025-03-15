@@ -56,7 +56,7 @@ const FieldCard = ({
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute top-3 left-3 z-20">
-          <span className="bg-brand-accent/90 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded">
+          <span className="bg-brand-primary/90 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded">
             {type}
           </span>
         </div>
@@ -87,12 +87,12 @@ const FieldCard = ({
 
         <div className="grid grid-cols-2 gap-3 my-3">
           <div className="flex items-center text-white/70 text-sm">
-            <Users className="w-4 h-4 text-brand-accent mr-2" />
+            <Users className="w-4 h-4 text-brand-primary mr-2" />
             <span>{capacity}</span>
           </div>
           {availability && (
             <div className="flex items-center text-white/70 text-sm">
-              <Clock className="w-4 h-4 text-brand-accent mr-2" />
+              <Clock className="w-4 h-4 text-brand-primary mr-2" />
               <span>{availability}</span>
             </div>
           )}
@@ -103,7 +103,7 @@ const FieldCard = ({
             <span className="text-white/60 text-xs">Starting from</span>
             <div className="text-white font-semibold">৳{price}/hr</div>
           </div>
-          <button className="btn-primary py-2 px-4 text-sm">Book Now</button>
+          <button className="btn-primary py-2 px-4 text-sm whitespace-nowrap">Book Now</button>
         </div>
       </div>
     </div>
