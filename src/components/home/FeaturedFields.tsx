@@ -3,14 +3,14 @@ import React from 'react';
 import FieldCard from '../ui/FieldCard';
 import { ArrowRight } from 'lucide-react';
 
-// Sample data for featured fields
+// Updated featured fields with the new uploaded images
 const featuredFields = [
   {
     id: '1',
     name: 'Prime Football Zone',
     type: 'Football',
     location: 'Dhanmondi',
-    imageUrl: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: '/lovable-uploads/375b0d7e-bc8a-4304-8a91-073cf146db8f.png',
     rating: 4.8,
     price: 2500,
     capacity: '10 Players Max',
@@ -18,24 +18,24 @@ const featuredFields = [
   },
   {
     id: '2',
-    name: 'Rooftop Cricket Academy',
-    type: 'Cricket',
+    name: 'Game1 Easy Turf',
+    type: 'Football',
     location: 'Gulshan',
-    imageUrl: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1994&auto=format&fit=crop',
+    imageUrl: '/lovable-uploads/9cbcdafc-7193-4850-8dff-c7c46f9bb595.png',
     rating: 4.6,
     price: 3000,
-    capacity: '22 Players Max',
+    capacity: '14 Players Max',
     availability: '8 AM - 9 PM'
   },
   {
     id: '3',
-    name: 'Indoor Badminton Court',
-    type: 'Badminton',
-    location: 'Banani',
-    imageUrl: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=2070&auto=format&fit=crop',
+    name: 'Mirpur Turf Zone',
+    type: 'Football',
+    location: 'Mirpur',
+    imageUrl: '/lovable-uploads/0d17e935-d941-4de0-ab21-42b90013033f.png',
     rating: 4.7,
-    price: 1200,
-    capacity: '4 Players Max',
+    price: 1800,
+    capacity: '12 Players Max',
     availability: '6 AM - 10 PM'
   },
   {
@@ -43,7 +43,7 @@ const featuredFields = [
     name: 'Bashundhara Turf Paradise',
     type: 'Football',
     location: 'Bashundhara',
-    imageUrl: 'https://images.unsplash.com/photo-1518635017498-87f514b751ba?q=80&w=2071&auto=format&fit=crop',
+    imageUrl: '/lovable-uploads/1b5f6b01-7d6a-4af1-9d95-1f91d10201a1.png',
     rating: 4.9,
     price: 2800,
     capacity: '14 Players Max',
@@ -51,25 +51,25 @@ const featuredFields = [
   },
   {
     id: '5',
-    name: 'Uttara Sports Complex',
-    type: 'Multi-Sport',
+    name: 'Uttara Sports Zone',
+    type: 'Football',
     location: 'Uttara',
-    imageUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop',
+    imageUrl: '/lovable-uploads/857cf3a0-7753-4d5e-a6f2-53437efa4162.png',
     rating: 4.5,
     price: 2200,
-    capacity: 'Varies by Sport',
+    capacity: '10 Players Max',
     availability: '9 AM - 10 PM'
   },
   {
     id: '6',
-    name: 'Mirpur Cricket Ground',
-    type: 'Cricket',
-    location: 'Mirpur',
-    imageUrl: 'https://images.unsplash.com/photo-1634576296729-140031e3c4a9?q=80&w=1932&auto=format&fit=crop',
+    name: 'Nighttime Turf Arena',
+    type: 'Football',
+    location: 'Banani',
+    imageUrl: '/lovable-uploads/bf750695-ccda-455f-9888-1ff5fcbd41c4.png',
     rating: 4.7,
     price: 2700,
-    capacity: '22 Players Max',
-    availability: '8 AM - 8 PM'
+    capacity: '12 Players Max',
+    availability: '6 PM - 2 AM'
   }
 ];
 
