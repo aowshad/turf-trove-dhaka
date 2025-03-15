@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import FieldCard from '../ui/FieldCard';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Filter } from 'lucide-react';
+import { Button } from '../ui/button';
 
-// Updated featured fields with the new uploaded images
+// Updated featured fields with amenities
 const featuredFields = [
   {
     id: '1',
@@ -14,7 +15,8 @@ const featuredFields = [
     rating: 4.8,
     price: 2500,
     capacity: '10 Players Max',
-    availability: '9 AM - 11 PM'
+    availability: '9 AM - 11 PM',
+    amenities: ['Floodlights', 'Changing Room', 'Water Supply']
   },
   {
     id: '2',
@@ -25,7 +27,8 @@ const featuredFields = [
     rating: 4.6,
     price: 3000,
     capacity: '14 Players Max',
-    availability: '8 AM - 9 PM'
+    availability: '8 AM - 9 PM',
+    amenities: ['Floodlights', 'Parking', 'Artificial Turf']
   },
   {
     id: '3',
@@ -36,7 +39,8 @@ const featuredFields = [
     rating: 4.7,
     price: 1800,
     capacity: '12 Players Max',
-    availability: '6 AM - 10 PM'
+    availability: '6 AM - 10 PM',
+    amenities: ['Parking', 'Water Supply', 'Floodlights']
   },
   {
     id: '4',
@@ -47,7 +51,8 @@ const featuredFields = [
     rating: 4.9,
     price: 2800,
     capacity: '14 Players Max',
-    availability: '24 Hours'
+    availability: '24 Hours',
+    amenities: ['Locker Room', 'Artificial Turf', 'Parking']
   },
   {
     id: '5',
@@ -58,7 +63,8 @@ const featuredFields = [
     rating: 4.5,
     price: 2200,
     capacity: '10 Players Max',
-    availability: '9 AM - 10 PM'
+    availability: '9 AM - 10 PM',
+    amenities: ['Floodlights', 'Water Supply', 'WiFi']
   },
   {
     id: '6',
@@ -69,11 +75,20 @@ const featuredFields = [
     rating: 4.7,
     price: 2700,
     capacity: '12 Players Max',
-    availability: '6 PM - 2 AM'
+    availability: '6 PM - 2 AM',
+    amenities: ['Professional Lighting', 'Changing Room', 'Canteen']
   }
 ];
 
+const fieldTypes = ["All", "Football", "Cricket", "Badminton"];
+
 const FeaturedFields = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+  
+  const filteredFields = activeFilter === "All" 
+    ? featuredFields 
+    : featuredFields.filter(field => field.type === activeFilter);
+
   return (
     <section className="bg-brand-darkest py-20" id="popular-fields">
       <div className="container mx-auto">
@@ -85,14 +100,32 @@ const FeaturedFields = () => {
               Discover the most popular fields in Dhaka, from state-of-the-art football turfs to professional cricket grounds
             </p>
           </div>
-          <a href="#" className="group flex items-center text-brand-accent hover:text-brand-light mt-4 md:mt-0 transition-colors">
-            <span className="font-medium">View All Fields</span>
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          
+          <Button variant="ghost" asChild className="group flex items-center text-brand-accent hover:text-brand-light mt-4 md:mt-0">
+            <a href="/fields">
+              <span className="font-medium">View All Fields</span>
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
+        </div>
+
+        {/* Filter buttons */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {fieldTypes.map(type => (
+            <Button
+              key={type}
+              variant={activeFilter === type ? "primary" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter(type)}
+              className={activeFilter === type ? "" : "text-white/70 hover:text-white border-white/10"}
+            >
+              {type}
+            </Button>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredFields.map((field, index) => (
+          {filteredFields.map((field, index) => (
             <div 
               key={field.id} 
               className="animate-slide-up" 
@@ -102,6 +135,12 @@ const FeaturedFields = () => {
             </div>
           ))}
         </div>
+        
+        {filteredFields.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-white/60">No fields found. Try a different filter.</p>
+          </div>
+        )}
       </div>
     </section>
   );

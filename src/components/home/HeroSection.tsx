@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import SearchBar from '../ui/SearchBar';
+import { Button } from '../ui/button';
 
 const HeroSection = () => {
   return (
@@ -35,13 +36,15 @@ const HeroSection = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 pt-8 animate-fade-in-delay" style={{ animationDelay: "0.4s" }}>
-            <a href="#popular-fields" className="btn-primary">
-              Find a Turf
-            </a>
-            <a href="#" className="btn-ghost">
-              List Your Turf
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
+            <Button variant="primary" asChild>
+              <a href="#popular-fields">Find a Turf</a>
+            </Button>
+            <Button variant="ghost" asChild className="group">
+              <a href="/list-your-turf">
+                List Your Turf
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Button>
           </div>
         </div>
         

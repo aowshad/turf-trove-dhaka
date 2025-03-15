@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -53,17 +53,17 @@ const TestimonialsSection = () => {
   return (
     <section className="py-20 bg-brand-dark">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-brand-highlight text-sm font-medium">What People Say</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-3">
             Customer <span className="text-gradient">Testimonials</span>
           </h2>
           <p className="text-white/60">
-            Hear from players and field owners who have used our platform
+            Hear what players and field owners have to say about their experience with our platform
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <Carousel
             opts={{
               align: "start",
@@ -71,48 +71,50 @@ const TestimonialsSection = () => {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent className="-ml-4">
               {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="bg-background/30 backdrop-blur-md border border-white/10 shadow-lg h-full">
-                    <CardContent className="p-6 flex flex-col h-full">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <Avatar className="h-10 w-10 border-2 border-brand-primary/30">
-                          <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                          <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <h4 className="text-white font-medium text-sm">{testimonial.name}</h4>
-                          <p className="text-white/60 text-xs">{testimonial.role}</p>
+                <CarouselItem key={testimonial.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="h-full">
+                    <Card className="bg-background/5 backdrop-blur-sm border border-white/5 shadow-xl h-full">
+                      <CardContent className="p-6 flex flex-col h-full">
+                        <div className="flex items-center space-x-3 mb-4">
+                          <Avatar className="h-10 w-10 border-2 border-brand-primary/30">
+                            <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                            <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <h4 className="text-white font-medium text-sm">{testimonial.name}</h4>
+                            <p className="text-white/60 text-xs">{testimonial.role}</p>
+                          </div>
                         </div>
-                      </div>
-                      
-                      <p className="text-white/80 text-sm leading-relaxed flex-grow">
-                        "{testimonial.content}"
-                      </p>
-                      
-                      <div className="flex items-center mt-4 pt-3 border-t border-white/5">
-                        {Array.from({ length: 5 }).map((_, index) => (
-                          <Star 
-                            key={index}
-                            className={cn(
-                              "w-3.5 h-3.5",
-                              index < testimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-white/20"
-                            )}
-                          />
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
+                        
+                        <div className="flex mb-3">
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <Star 
+                              key={index}
+                              className={cn(
+                                "w-3.5 h-3.5 mr-0.5",
+                                index < testimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-white/20"
+                              )}
+                            />
+                          ))}
+                        </div>
+                        
+                        <p className="text-white/80 text-sm leading-relaxed flex-grow">
+                          "{testimonial.content}"
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             <div className="flex justify-center mt-8 gap-2">
               <CarouselPrevious 
-                className="static transform-none bg-background/30 backdrop-blur-md border border-white/10 text-white hover:bg-brand-primary/20 hover:text-brand-primary"
+                className="static transform-none bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-brand-primary hover:text-white hover:border-brand-primary"
               />
               <CarouselNext 
-                className="static transform-none bg-background/30 backdrop-blur-md border border-white/10 text-white hover:bg-brand-primary/20 hover:text-brand-primary"
+                className="static transform-none bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-brand-primary hover:text-white hover:border-brand-primary"
               />
             </div>
           </Carousel>

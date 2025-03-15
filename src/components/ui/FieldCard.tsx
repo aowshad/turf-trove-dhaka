@@ -2,6 +2,8 @@
 import React from 'react';
 import { Star, MapPin, Users, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface FieldCardProps {
   id: string;
@@ -13,6 +15,7 @@ interface FieldCardProps {
   price: number;
   capacity: string;
   availability?: string;
+  amenities?: string[];
   className?: string;
   variant?: 'default' | 'horizontal';
 }
@@ -27,6 +30,7 @@ const FieldCard = ({
   price, 
   capacity,
   availability,
+  amenities,
   className,
   variant = 'default'
 }: FieldCardProps) => {
@@ -98,12 +102,31 @@ const FieldCard = ({
           )}
         </div>
 
+        {amenities && amenities.length > 0 && (
+          <div className="mt-2 mb-3">
+            <div className="flex flex-wrap gap-1">
+              {amenities.slice(0, 3).map((amenity, index) => (
+                <span key={index} className="text-xs bg-white/10 text-white/80 px-2 py-0.5 rounded">
+                  {amenity}
+                </span>
+              ))}
+              {amenities.length > 3 && (
+                <span className="text-xs bg-white/10 text-white/80 px-2 py-0.5 rounded">
+                  +{amenities.length - 3} more
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
           <div>
             <span className="text-white/60 text-xs">Starting from</span>
             <div className="text-white font-semibold">৳{price}/hr</div>
           </div>
-          <button className="btn-primary py-2 px-4 text-sm whitespace-nowrap">Book Now</button>
+          <Button variant="primary" size="sm" asChild>
+            <Link to={`/fields/${id}`}>Book Now</Link>
+          </Button>
         </div>
       </div>
     </div>
