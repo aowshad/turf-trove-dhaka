@@ -1,0 +1,123 @@
+
+import React from 'react';
+import { MapPin } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const locations = [
+  {
+    name: 'Dhanmondi',
+    image: 'https://images.unsplash.com/photo-1609225086330-9f486f39d235?q=80&w=2070&auto=format&fit=crop',
+    count: 18
+  },
+  {
+    name: 'Mirpur',
+    image: 'https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=2070&auto=format&fit=crop',
+    count: 24
+  },
+  {
+    name: 'Gulshan',
+    image: 'https://images.unsplash.com/photo-1621164344554-05c2b6cda7df?q=80&w=2070&auto=format&fit=crop',
+    count: 15
+  },
+  {
+    name: 'Bashundhara',
+    image: 'https://images.unsplash.com/photo-1486882430381-e76d701e0a3e?q=80&w=2070&auto=format&fit=crop',
+    count: 21
+  },
+  {
+    name: 'Uttara',
+    image: 'https://images.unsplash.com/photo-1527195575508-5b138d14a35b?q=80&w=2066&auto=format&fit=crop',
+    count: 19
+  },
+  {
+    name: 'Banani',
+    image: 'https://images.unsplash.com/photo-1520473378652-85d9c4aee6cf?q=80&w=2069&auto=format&fit=crop',
+    count: 14
+  },
+  {
+    name: 'Mohammadpur',
+    image: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=2070&auto=format&fit=crop',
+    count: 12
+  },
+  {
+    name: 'Khilgaon',
+    image: 'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=2070&auto=format&fit=crop',
+    count: 9
+  }
+];
+
+const LocationsSection = () => {
+  return (
+    <section className="bg-brand-dark py-20">
+      <div className="container mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-brand-highlight text-sm font-medium">Explore Dhaka</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">
+            Find Fields by <span className="text-gradient">Location</span>
+          </h2>
+          <p className="text-white/60">
+            Discover sports fields across different areas of Dhaka. 
+            Find the perfect venue close to your home or workplace.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {locations.map((location, index) => (
+            <LocationCard
+              key={location.name}
+              location={location}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+interface LocationCardProps {
+  location: {
+    name: string;
+    image: string;
+    count: number;
+  };
+  index: number;
+}
+
+const LocationCard = ({ location, index }: LocationCardProps) => {
+  return (
+    <div 
+      className="relative group rounded-xl overflow-hidden aspect-square cursor-pointer animate-slide-up"
+      style={{ animationDelay: `${index * 0.05}s` }}
+    >
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <div className={cn(
+          "absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/70 to-transparent z-10 transition-opacity duration-300",
+          "group-hover:opacity-70"
+        )}></div>
+        <img 
+          src={location.image} 
+          alt={location.name}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="absolute inset-0 z-20 flex flex-col justify-end p-4">
+        <div className="flex items-center mb-1">
+          <MapPin className="w-4 h-4 text-brand-accent mr-1" />
+          <h3 className="text-white font-semibold">{location.name}</h3>
+        </div>
+        <p className="text-white/70 text-sm">
+          {location.count} Fields Available
+        </p>
+      </div>
+      
+      {/* Hover Overlay */}
+      <div className="absolute inset-0 z-10 border-2 border-transparent transition-all duration-300 group-hover:border-brand-accent rounded-xl"></div>
+    </div>
+  );
+};
+
+export default LocationsSection;
