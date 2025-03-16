@@ -8,6 +8,7 @@ import LocationsSection from '@/components/home/LocationsSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import HowItWorksSection from '@/components/home/HowItWorksSection';
 import CtaSection from '@/components/home/CtaSection';
+import BookingCta from '@/components/home/BookingCta';
 
 const Index = () => {
   // Smooth scroll for anchor links
@@ -43,6 +44,7 @@ const Index = () => {
         <LocationsSection />
         <HowItWorksSection />
         <TestimonialsSection />
+        <BookingCta />
         <CtaSection />
       </main>
       

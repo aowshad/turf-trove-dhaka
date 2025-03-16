@@ -1,10 +1,18 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 import SearchBar from '../ui/SearchBar';
 import { Button } from '../ui/button';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('popular-fields');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
@@ -37,13 +45,13 @@ const HeroSection = () => {
           
           <div className="flex flex-wrap justify-center gap-4 pt-8 animate-fade-in-delay" style={{ animationDelay: "0.4s" }}>
             <Button variant="primary" asChild>
-              <a href="#popular-fields">Find a Turf</a>
+              <Link to="/fields">Find a Turf</Link>
             </Button>
             <Button variant="ghost" asChild className="group">
-              <a href="/list-your-turf">
+              <Link to="/list-your-turf">
                 List Your Turf
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
@@ -64,11 +72,15 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-pulse-subtle">
+      {/* Scroll indicator - fixed alignment and functionality */}
+      <button 
+        onClick={scrollToNextSection}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-pulse-subtle hover:opacity-75 transition-opacity focus:outline-none"
+        aria-label="Scroll to next section"
+      >
         <span className="text-white/50 text-sm mb-2">Scroll Down</span>
-        <div className="w-0.5 h-8 bg-gradient-to-b from-white/50 to-transparent"></div>
-      </div>
+        <ArrowDown className="w-5 h-5 text-white/50" />
+      </button>
     </section>
   );
 };

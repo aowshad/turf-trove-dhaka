@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const CtaSection = () => {
   return (
@@ -41,13 +43,15 @@ const CtaSection = () => {
             </div>
             
             <div className="flex flex-wrap gap-4 pt-4">
-              <a href="#" className="btn-primary">
-                List Your Field
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
-              <a href="#" className="btn-ghost">
-                Learn More
-              </a>
+              <Button variant="primary" asChild>
+                <Link to="/list-your-turf">
+                  List Your Field
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </Button>
+              <Button variant="ghost" asChild>
+                <Link to="/about">Learn More</Link>
+              </Button>
             </div>
           </div>
           
@@ -99,12 +103,13 @@ const CtaSection = () => {
                   </select>
                 </div>
                 
-                <button 
+                <Button 
                   type="submit" 
-                  className="w-full btn-primary py-3 mt-4"
+                  variant="primary"
+                  className="w-full py-3 mt-4"
                 >
                   Submit Request
-                </button>
+                </Button>
                 
                 <p className="text-white/50 text-xs text-center">
                   Our team will contact you within 24 hours
