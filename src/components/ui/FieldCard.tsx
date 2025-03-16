@@ -3,7 +3,7 @@ import React from 'react';
 import { Star, MapPin, Users, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface FieldCardProps {
   id: string;
@@ -34,15 +34,22 @@ const FieldCard = ({
   className,
   variant = 'default'
 }: FieldCardProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/fields/${id}`);
+  };
+
   return (
     <div 
       className={cn(
-        "group overflow-hidden rounded-xl transition-all duration-500",
+        "group overflow-hidden rounded-xl transition-all duration-500 cursor-pointer",
         variant === 'default' 
           ? "flex flex-col h-full" 
           : "grid grid-cols-1 md:grid-cols-12 h-full",
         className
       )}
+      onClick={handleCardClick}
     >
       {/* Image Container */}
       <div 
@@ -124,8 +131,15 @@ const FieldCard = ({
             <span className="text-white/60 text-xs">Starting from</span>
             <div className="text-white font-semibold">৳{price}/hr</div>
           </div>
-          <Button variant="primary" size="sm" asChild>
-            <Link to={`/fields/${id}`}>Book Now</Link>
+          <Button 
+            variant="primary" 
+            size="sm" 
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/fields/${id}`);
+            }}
+          >
+            Book Now
           </Button>
         </div>
       </div>

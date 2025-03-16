@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -8,14 +7,14 @@ import { Button } from '@/components/ui/button';
 import { Filter } from 'lucide-react';
 import BookingCta from '@/components/home/BookingCta';
 
-// Mock field data 
+// Mock field data with updated Unsplash images
 const allFields = [
   {
     id: '1',
     name: 'Prime Football Zone',
     type: 'Football',
     location: 'Dhanmondi',
-    imageUrl: '/lovable-uploads/375b0d7e-bc8a-4304-8a91-073cf146db8f.png',
+    imageUrl: 'https://images.unsplash.com/photo-1556302132-40bb13638500?q=80&w=2070&auto=format&fit=crop',
     rating: 4.8,
     price: 2500,
     capacity: '10 Players Max',
@@ -27,7 +26,7 @@ const allFields = [
     name: 'Game1 Easy Turf',
     type: 'Football',
     location: 'Gulshan',
-    imageUrl: '/lovable-uploads/9cbcdafc-7193-4850-8dff-c7c46f9bb595.png',
+    imageUrl: 'https://images.unsplash.com/photo-1600679472829-3044539ce8ed?q=80&w=2070&auto=format&fit=crop',
     rating: 4.6,
     price: 3000,
     capacity: '14 Players Max',
@@ -39,7 +38,7 @@ const allFields = [
     name: 'Mirpur Turf Zone',
     type: 'Football',
     location: 'Mirpur',
-    imageUrl: '/lovable-uploads/0d17e935-d941-4de0-ab21-42b90013033f.png',
+    imageUrl: 'https://images.unsplash.com/photo-1592650887115-b5b5ae0e1045?q=80&w=2070&auto=format&fit=crop',
     rating: 4.7,
     price: 1800,
     capacity: '12 Players Max',
@@ -51,7 +50,7 @@ const allFields = [
     name: 'Bashundhara Turf Paradise',
     type: 'Football',
     location: 'Bashundhara',
-    imageUrl: '/lovable-uploads/1b5f6b01-7d6a-4af1-9d95-1f91d10201a1.png',
+    imageUrl: 'https://images.unsplash.com/photo-1518604666860-9ed391f76460?q=80&w=2070&auto=format&fit=crop',
     rating: 4.9,
     price: 2800,
     capacity: '14 Players Max',
@@ -63,7 +62,7 @@ const allFields = [
     name: 'Uttara Sports Zone',
     type: 'Football',
     location: 'Uttara',
-    imageUrl: '/lovable-uploads/857cf3a0-7753-4d5e-a6f2-53437efa4162.png',
+    imageUrl: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?q=80&w=2070&auto=format&fit=crop',
     rating: 4.5,
     price: 2200,
     capacity: '10 Players Max',
@@ -75,7 +74,7 @@ const allFields = [
     name: 'Nighttime Turf Arena',
     type: 'Football',
     location: 'Banani',
-    imageUrl: '/lovable-uploads/bf750695-ccda-455f-9888-1ff5fcbd41c4.png',
+    imageUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2076&auto=format&fit=crop',
     rating: 4.7,
     price: 2700,
     capacity: '12 Players Max',
@@ -123,15 +122,11 @@ const Fields = () => {
   const [selectedPrice, setSelectedPrice] = useState('All Prices');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Filter fields based on selections
   const filteredFields = allFields.filter(field => {
-    // Location filter
     const locationMatch = selectedLocation === 'All Locations' || field.location === selectedLocation;
     
-    // Type filter
     const typeMatch = selectedType === 'All Types' || field.type === selectedType;
     
-    // Price filter
     let priceMatch = true;
     if (selectedPrice === '৳1000 - ৳2000') {
       priceMatch = field.price >= 1000 && field.price <= 2000;
@@ -149,7 +144,6 @@ const Fields = () => {
       <Navbar />
       
       <main className="flex-grow pt-20">
-        {/* Header */}
         <section className="bg-brand-darkest py-16">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center mb-10">
@@ -167,10 +161,8 @@ const Fields = () => {
           </div>
         </section>
         
-        {/* Fields and Filters */}
         <section className="py-12 bg-brand-dark">
           <div className="container mx-auto">
-            {/* Mobile Filter Button */}
             <div className="flex justify-between items-center mb-6 md:hidden">
               <h2 className="text-xl font-bold text-white">
                 Available Fields ({filteredFields.length})
@@ -186,12 +178,10 @@ const Fields = () => {
             </div>
             
             <div className="flex flex-col md:flex-row gap-6">
-              {/* Filters */}
               <div className={`md:w-1/4 transition-all ${showFilters ? 'block' : 'hidden md:block'}`}>
                 <div className="bg-brand-darkest rounded-lg p-5 sticky top-24">
                   <h3 className="text-lg font-semibold text-white mb-4">Filters</h3>
                   
-                  {/* Filter by Location */}
                   <div className="mb-6">
                     <h4 className="text-white font-medium mb-2">Location</h4>
                     <div className="space-y-2">
@@ -211,7 +201,6 @@ const Fields = () => {
                     </div>
                   </div>
                   
-                  {/* Filter by Field Type */}
                   <div className="mb-6">
                     <h4 className="text-white font-medium mb-2">Field Type</h4>
                     <div className="space-y-2">
@@ -231,7 +220,6 @@ const Fields = () => {
                     </div>
                   </div>
                   
-                  {/* Filter by Price */}
                   <div className="mb-4">
                     <h4 className="text-white font-medium mb-2">Price Range</h4>
                     <div className="space-y-2">
@@ -251,7 +239,6 @@ const Fields = () => {
                     </div>
                   </div>
                   
-                  {/* Reset Filters */}
                   <Button 
                     variant="outline" 
                     onClick={() => {
@@ -266,7 +253,6 @@ const Fields = () => {
                 </div>
               </div>
               
-              {/* Field Listings */}
               <div className="md:w-3/4">
                 <div className="hidden md:flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold text-white">

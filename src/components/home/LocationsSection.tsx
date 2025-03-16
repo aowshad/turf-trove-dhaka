@@ -2,46 +2,47 @@
 import React from 'react';
 import { MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 const locations = [
   {
     name: 'Dhanmondi',
-    image: 'https://images.unsplash.com/photo-1609225086330-9f486f39d235?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1528260233014-d50c1b8d81ed?q=80&w=2070&auto=format&fit=crop',
     count: 18
   },
   {
     name: 'Mirpur',
-    image: 'https://images.unsplash.com/photo-1459865264687-595d652de67e?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611152741456-fae22fc0a898?q=80&w=2070&auto=format&fit=crop',
     count: 24
   },
   {
     name: 'Gulshan',
-    image: 'https://images.unsplash.com/photo-1621164344554-05c2b6cda7df?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1580247817119-c83ec0587664?q=80&w=2069&auto=format&fit=crop',
     count: 15
   },
   {
     name: 'Bashundhara',
-    image: 'https://images.unsplash.com/photo-1486882430381-e76d701e0a3e?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop',
     count: 21
   },
   {
     name: 'Uttara',
-    image: 'https://images.unsplash.com/photo-1527195575508-5b138d14a35b?q=80&w=2066&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590298347026-a072cbb34915?q=80&w=2070&auto=format&fit=crop',
     count: 19
   },
   {
     name: 'Banani',
-    image: 'https://images.unsplash.com/photo-1520473378652-85d9c4aee6cf?q=80&w=2069&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1468436385273-8abca6dfd8d3?q=80&w=2070&auto=format&fit=crop',
     count: 14
   },
   {
     name: 'Mohammadpur',
-    image: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1503662549811-e326b3226b42?q=80&w=2069&auto=format&fit=crop',
     count: 12
   },
   {
     name: 'Khilgaon',
-    image: 'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1605501035722-4d880eed89c4?q=80&w=2070&auto=format&fit=crop',
     count: 9
   }
 ];
@@ -85,10 +86,17 @@ interface LocationCardProps {
 }
 
 const LocationCard = ({ location, index }: LocationCardProps) => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    navigate(`/fields?location=${location.name}`);
+  };
+  
   return (
     <div 
       className="relative group rounded-xl overflow-hidden aspect-square cursor-pointer animate-slide-up"
       style={{ animationDelay: `${index * 0.05}s` }}
+      onClick={handleClick}
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">

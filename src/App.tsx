@@ -15,6 +15,8 @@ import ListYourTurf from "./pages/ListYourTurf";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
+import FieldDetails from "./pages/FieldDetails";
+import BookingPage from "./pages/BookingPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/fields" element={<Fields />} />
+          <Route path="/fields/:id" element={<FieldDetails />} />
+          <Route path="/booking/:id" element={<BookingPage />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />

@@ -4,14 +4,14 @@ import FieldCard from '../ui/FieldCard';
 import { ArrowRight, Filter } from 'lucide-react';
 import { Button } from '../ui/button';
 
-// Updated featured fields with amenities
+// Updated featured fields with amenities and high-quality Unsplash images
 const featuredFields = [
   {
     id: '1',
     name: 'Prime Football Zone',
     type: 'Football',
     location: 'Dhanmondi',
-    imageUrl: '/lovable-uploads/375b0d7e-bc8a-4304-8a91-073cf146db8f.png',
+    imageUrl: 'https://images.unsplash.com/photo-1556302132-40bb13638500?q=80&w=2070&auto=format&fit=crop',
     rating: 4.8,
     price: 2500,
     capacity: '10 Players Max',
@@ -23,7 +23,7 @@ const featuredFields = [
     name: 'Game1 Easy Turf',
     type: 'Football',
     location: 'Gulshan',
-    imageUrl: '/lovable-uploads/9cbcdafc-7193-4850-8dff-c7c46f9bb595.png',
+    imageUrl: 'https://images.unsplash.com/photo-1600679472829-3044539ce8ed?q=80&w=2070&auto=format&fit=crop',
     rating: 4.6,
     price: 3000,
     capacity: '14 Players Max',
@@ -35,7 +35,7 @@ const featuredFields = [
     name: 'Mirpur Turf Zone',
     type: 'Football',
     location: 'Mirpur',
-    imageUrl: '/lovable-uploads/0d17e935-d941-4de0-ab21-42b90013033f.png',
+    imageUrl: 'https://images.unsplash.com/photo-1592650887115-b5b5ae0e1045?q=80&w=2070&auto=format&fit=crop',
     rating: 4.7,
     price: 1800,
     capacity: '12 Players Max',
@@ -47,7 +47,7 @@ const featuredFields = [
     name: 'Bashundhara Turf Paradise',
     type: 'Football',
     location: 'Bashundhara',
-    imageUrl: '/lovable-uploads/1b5f6b01-7d6a-4af1-9d95-1f91d10201a1.png',
+    imageUrl: 'https://images.unsplash.com/photo-1518604666860-9ed391f76460?q=80&w=2070&auto=format&fit=crop',
     rating: 4.9,
     price: 2800,
     capacity: '14 Players Max',
@@ -59,7 +59,7 @@ const featuredFields = [
     name: 'Uttara Sports Zone',
     type: 'Football',
     location: 'Uttara',
-    imageUrl: '/lovable-uploads/857cf3a0-7753-4d5e-a6f2-53437efa4162.png',
+    imageUrl: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?q=80&w=2070&auto=format&fit=crop',
     rating: 4.5,
     price: 2200,
     capacity: '10 Players Max',
@@ -71,7 +71,7 @@ const featuredFields = [
     name: 'Nighttime Turf Arena',
     type: 'Football',
     location: 'Banani',
-    imageUrl: '/lovable-uploads/bf750695-ccda-455f-9888-1ff5fcbd41c4.png',
+    imageUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2076&auto=format&fit=crop',
     rating: 4.7,
     price: 2700,
     capacity: '12 Players Max',
