@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, User, Search, Globe } from 'lucide-react';
+import { Menu, X, User, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button'; 
@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState('en'); // 'en' for English, 'bn' for Bangla
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +22,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'bn' : 'en');
-    // In a real app, this would trigger language change throughout the app
-  };
-
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Fields', path: '/fields' },
@@ -36,19 +30,6 @@ const Navbar = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
-
-  const languageText = {
-    en: {
-      signIn: 'Sign In',
-      register: 'Register',
-      language: 'EN'
-    },
-    bn: {
-      signIn: 'লগইন',
-      register: 'নিবন্ধন',
-      language: 'বাং'
-    }
-  };
 
   return (
     <header
@@ -79,29 +60,27 @@ const Navbar = () => {
 
         {/* User Actions */}
         <div className="hidden md:flex items-center space-x-4">
-          <button 
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-dark border border-white/10 hover:bg-brand-dark/80 transition-all"
-            onClick={toggleLanguage}
-            aria-label="Change language"
-          >
-            <Globe className="w-5 h-5 text-white/80" />
-            <span className="sr-only md:not-sr-only md:ml-2 text-xs font-medium text-white/80">
-              {languageText[language].language}
-            </span>
-          </button>
-          <Link to="/search">
+          <Link to="/fields">
             <button className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-dark border border-white/10 hover:bg-brand-dark/80 transition-all">
               <Search className="w-5 h-5 text-white/80" />
             </button>
           </Link>
           <Button 
+            variant="outline"
+            size="sm"
+            asChild
+            className="border-white/10 text-white hover:bg-brand-primary/20 hover:text-white"
+          >
+            <Link to="/sign-up">Sign Up</Link>
+          </Button>
+          <Button 
             variant="primary"
             size="sm"
             asChild
           >
-            <Link to="/login" className="flex items-center gap-2">
+            <Link to="/sign-in" className="flex items-center gap-2">
               <User className="w-4 h-4" />
-              <span>{languageText[language].signIn}</span>
+              <span>Sign In</span>
             </Link>
           </Button>
         </div>
@@ -140,22 +119,15 @@ const Navbar = () => {
             ))}
           </nav>
           <div className="mt-auto pb-10 flex flex-col space-y-4">
-            <div className="flex justify-between mb-4">
-              <button 
-                className="flex items-center justify-center px-3 py-2 rounded-lg bg-brand-dark/60 border border-white/10 hover:bg-brand-dark/80 transition-all"
-                onClick={toggleLanguage}
-              >
-                <Globe className="w-5 h-5 text-white/80 mr-2" />
-                <span className="text-sm font-medium text-white/80">
-                  {language === 'en' ? 'Switch to Bangla' : 'Switch to English'}
-                </span>
-              </button>
-            </div>
-            <Link to="/login" className="btn-primary w-full text-center" onClick={() => setMobileMenuOpen(false)}>
-              {languageText[language].signIn}
+            <Link to="/sign-in" className="w-full">
+              <Button variant="primary" className="w-full" onClick={() => setMobileMenuOpen(false)}>
+                Sign In
+              </Button>
             </Link>
-            <Link to="/register" className="btn-ghost w-full text-center" onClick={() => setMobileMenuOpen(false)}>
-              {languageText[language].register}
+            <Link to="/sign-up" className="w-full">
+              <Button variant="outline" className="w-full border-white/10 text-white" onClick={() => setMobileMenuOpen(false)}>
+                Sign Up
+              </Button>
             </Link>
           </div>
         </div>
